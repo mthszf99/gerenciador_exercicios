@@ -1,5 +1,6 @@
-import React from "react";
-import { Alert,  Platform, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { useRouter } from "expo-router";
+import React, { use } from "react";
+import { Alert, Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 function showAlert(message : string) {
@@ -10,7 +11,8 @@ function showAlert(message : string) {
   }
 }
 
-const Login = () => {
+function Login () {
+  const router = useRouter();
   return(
     <SafeAreaProvider>
       <SafeAreaView style={{flexDirection : 'column'}}>
@@ -32,7 +34,7 @@ const Login = () => {
          </TouchableOpacity>
          <TouchableOpacity
           style={styles.buttonCadastro}
-          onPress={() => showAlert('Rota página Cadastro')}
+          onPress={() => router.push('/cadastro')}
           activeOpacity={0.7}>
             <Text style={styles.textCadastro}>Cadastre-se</Text>
          </TouchableOpacity>             
@@ -42,6 +44,7 @@ const Login = () => {
     </SafeAreaProvider>
   );
 };
+
 
 const styles = StyleSheet.create({
   principalView: {
